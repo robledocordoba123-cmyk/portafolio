@@ -1,7 +1,7 @@
 ---
 // Íconos SVG en línea para no depender de librerías externas.
 interface Props {
-  nombre: 'github' | 'linkedin' | 'correo' | 'descarga' | 'externo' | 'flecha-abajo';
+  nombre: 'github' | 'linkedin' | 'correo' | 'descarga' | 'externo' | 'flecha-abajo' | 'carpeta';
 }
 const { nombre } = Astro.props;
 ---
@@ -35,6 +35,9 @@ const { nombre } = Astro.props;
       <path d="M7 17 17 7" />
       <path d="M7 7h10v10" />
     </>
+  )}
+  {nombre === 'carpeta' && (
+    <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9l-.8-1.2A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" />
   )}
   {nombre === 'flecha-abajo' && (
     <>

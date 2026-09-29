@@ -1,4 +1,6 @@
-// Contenido de los proyectos. Para agregar uno nuevo basta con sumar un objeto aquí.
+// Contenido del sitio. Para agregar un proyecto basta con sumar un objeto aquí.
+const gh = 'https://github.com/robledocordoba123-cmyk';
+
 export const proyectos = [
   {
     id: 'cuentasclaras',
@@ -19,7 +21,7 @@ export const proyectos = [
     ],
     stack: ['Java 21', 'Spring Boot', 'Spring Security', 'JPA', 'Flyway', 'PostgreSQL', 'React', 'Testcontainers', 'Docker'],
     demo: 'https://cuentasclaras-demo.vercel.app',
-    codigo: 'https://github.com/robledocordoba123-cmyk/CuentasClaras',
+    codigo: `${gh}/CuentasClaras`,
     imagen: '/proyectos/cuentasclaras-resumen.png',
     imagenExtra: '/proyectos/cuentasclaras-celular.png',
     extraEsCelular: true,
@@ -44,11 +46,51 @@ export const proyectos = [
     ],
     stack: ['Node.js', 'Express 5', 'Prisma', 'PostgreSQL', 'React', 'Tailwind CSS', 'JWT', 'Jest', 'GitHub Actions'],
     demo: 'https://ritmoapp-demo.vercel.app',
-    codigo: 'https://github.com/robledocordoba123-cmyk/RitmoApp',
+    codigo: `${gh}/RitmoApp`,
     imagen: '/proyectos/ritmoapp-panel.png',
     imagenExtra: '/proyectos/ritmoapp-catalogo.png',
     extraEsCelular: false,
     color: '#a3e635',
+  },
+];
+
+// Proyectos más pequeños, de práctica o de las competencias del SENA.
+export const otros = [
+  {
+    nombre: 'SecureDesk ADSO',
+    texto: 'API para registrar y clasificar incidentes de seguridad, con roles, contraseñas con hash, validación con Zod, límite de intentos y respaldos.',
+    etiquetas: ['Node.js', 'Prisma', 'PostgreSQL', 'JWT'],
+    enlace: `${gh}/securedesk-adso`,
+  },
+  {
+    nombre: 'Landing + Panel',
+    texto: 'Landing con formulario de contacto guardado en base de datos y un panel de administración protegido con login.',
+    etiquetas: ['React', 'Tailwind', 'Express', 'Prisma'],
+    enlace: `${gh}/landing-panel-frontend`,
+  },
+  {
+    nombre: 'Sistema Educativo API',
+    texto: 'API REST de 35 endpoints para profesores, cursos, horarios, inscripciones y notas, con su modelo entidad-relación.',
+    etiquetas: ['Node.js', 'Express', 'SQLite', 'Render'],
+    enlace: `${gh}/sistema-educativo-api`,
+  },
+  {
+    nombre: 'Veterinaria en Docker',
+    texto: 'API de mascotas donde todo el tráfico entra por Nginx como proxy inverso; la base de datos nunca queda expuesta.',
+    etiquetas: ['Docker Compose', 'Nginx', 'MySQL'],
+    enlace: `${gh}/veterinaria-docker`,
+  },
+  {
+    nombre: 'MiniBlog en contenedores',
+    texto: 'App en Flask con PostgreSQL, orquestada con Docker Compose y con integración continua en GitHub Actions.',
+    etiquetas: ['Python', 'Flask', 'Docker', 'CI'],
+    enlace: `${gh}/miniblog`,
+  },
+  {
+    nombre: 'Kubernetes con Minikube',
+    texto: 'Pods, Deployments con réplicas, Services, rolling updates con rollback y una arquitectura por namespaces.',
+    etiquetas: ['Kubernetes', 'Minikube', 'YAML'],
+    enlace: `${gh}/actividad-kubernetes-minikube`,
   },
 ];
 
@@ -75,9 +117,54 @@ export const pasos = [
   },
 ];
 
+// Cada tecnología con su logo (archivos en public/tecnologias).
 export const stack = [
-  { grupo: 'Backend', items: ['Java 21', 'Spring Boot', 'Spring Security', 'Node.js', 'Express', 'APIs REST', 'JWT'] },
-  { grupo: 'Frontend', items: ['React', 'Vite', 'Tailwind CSS', 'JavaScript', 'HTML', 'CSS', 'Astro'] },
-  { grupo: 'Datos', items: ['PostgreSQL', 'MySQL', 'SQL', 'JPA / Hibernate', 'Prisma', 'Flyway'] },
-  { grupo: 'Calidad y DevOps', items: ['JUnit 5', 'Testcontainers', 'Jest', 'Git', 'GitHub Actions', 'Docker', 'Vercel', 'Render'] },
+  {
+    grupo: 'Backend',
+    items: [
+      { nombre: 'Java', logo: 'java' },
+      { nombre: 'Spring Boot', logo: 'spring' },
+      { nombre: 'Node.js', logo: 'nodejs' },
+      { nombre: 'Express', logo: 'express', oscuro: true },
+      { nombre: 'Prisma', logo: 'prisma', oscuro: true },
+    ],
+  },
+  {
+    grupo: 'Frontend',
+    items: [
+      { nombre: 'React', logo: 'react' },
+      { nombre: 'JavaScript', logo: 'javascript' },
+      { nombre: 'Tailwind CSS', logo: 'tailwindcss' },
+      { nombre: 'Astro', logo: 'astro' },
+      { nombre: 'HTML y CSS', logo: 'html5' },
+    ],
+  },
+  {
+    grupo: 'Datos',
+    items: [
+      { nombre: 'PostgreSQL', logo: 'postgresql' },
+      { nombre: 'MySQL', logo: 'mysql' },
+      { nombre: 'Python', logo: 'python' },
+    ],
+  },
+  {
+    grupo: 'Calidad y DevOps',
+    items: [
+      { nombre: 'JUnit 5', logo: 'junit' },
+      { nombre: 'Jest', logo: 'jest' },
+      { nombre: 'Git', logo: 'git' },
+      { nombre: 'GitHub Actions', logo: 'githubactions' },
+      { nombre: 'Docker', logo: 'docker' },
+      { nombre: 'Kubernetes', logo: 'kubernetes' },
+      { nombre: 'Vercel', logo: 'vercel', oscuro: true },
+    ],
+  },
+];
+
+export const camino = [
+  { fecha: 'Julio 2024', titulo: 'Empiezo en el SENA', texto: 'Tecnología en Análisis y Desarrollo de Software, CTMA Medellín.' },
+  { fecha: '2025', titulo: 'Bases sólidas', texto: 'Java, bases de datos, UML, historias de usuario y mis primeras APIs REST.' },
+  { fecha: '2026', titulo: 'DevOps y seguridad', texto: 'Docker, Nginx, Kubernetes, integración continua y seguridad informática aplicada.' },
+  { fecha: 'Sep 2026', titulo: 'Dos apps en producción', texto: 'RitmoApp y CuentasClaras en vivo, con pruebas, CI y despliegue.' },
+  { fecha: 'Abril 2027', titulo: 'Etapa productiva', texto: 'Busco la empresa donde aportar y seguir creciendo. ¿Será la tuya?', destacado: true },
 ];
