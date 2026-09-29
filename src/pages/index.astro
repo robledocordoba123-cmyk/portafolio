@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import Icono from '../components/Icono.astro';
-import { proyectos, pasos, stack } from '../data/proyectos.js';
+import { proyectos, otros, pasos, stack, camino } from '../data/proyectos.js';
 
 const correo = 'robledocordoba123@gmail.com';
 const linkedin = 'https://www.linkedin.com/in/manuela-c%C3%B3rdoba-robledo-145322418/';
@@ -9,6 +9,9 @@ const github = 'https://github.com/robledocordoba123-cmyk';
 const cv = '/HV_Manuela_Cordoba_Robledo.pdf';
 const descripcion =
   'Manuela Córdoba Robledo, desarrolladora backend y full stack en Medellín. Java, Spring Boot, Node.js, React y PostgreSQL. Proyectos en vivo con pruebas automáticas y despliegue en la nube.';
+
+// Logos que desfilan en la cinta de tecnologías (se repiten para que el movimiento sea continuo).
+const cinta = stack.flatMap((g) => g.items);
 ---
 
 <!doctype html>
@@ -20,14 +23,15 @@ const descripcion =
     <meta name="description" content={descripcion} />
     <meta property="og:title" content="Manuela Córdoba Robledo · Desarrolladora de Software" />
     <meta property="og:description" content={descripcion} />
-    <meta property="og:image" content="/proyectos/cuentasclaras-resumen.png" />
+    <meta property="og:image" content="https://manuela-cordoba.vercel.app/og.png" />
     <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#050605" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -55,39 +59,73 @@ const descripcion =
       <section id="inicio" class="portada">
         <div class="brillo" aria-hidden="true"></div>
         <div class="contenedor portada-interior">
-          <p class="disponible revelar"><span class="en-vivo">Disponible</span> para contrato de aprendizaje desde abril de 2027</p>
-          <h1 class="revelar">
-            Hola, soy <span class="degradado">Manuela</span>.<br />
-            Llevo el software de la<br class="solo-escritorio" /> idea a producción
-            <span class="ecualizador grande" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>
-          </h1>
-          <p class="lema revelar">
-            Desarrolladora backend y full stack en Medellín. Diseño, programo, pruebo y despliego aplicaciones completas con <strong>Java y Spring Boot</strong> o <strong>Node.js</strong>, sobre PostgreSQL y con React.
-          </p>
-          <div class="acciones revelar">
-            <a href="#proyectos" class="boton boton-principal">Ver mis proyectos <Icono nombre="flecha-abajo" /></a>
-            <a href={cv} class="boton boton-secundario" download>Descargar CV <Icono nombre="descarga" /></a>
-            <a href={github} class="icono-redondo" target="_blank" rel="noopener" aria-label="GitHub"><Icono nombre="github" /></a>
-            <a href={linkedin} class="icono-redondo" target="_blank" rel="noopener" aria-label="LinkedIn"><Icono nombre="linkedin" /></a>
+          <div class="portada-texto">
+            <p class="disponible revelar"><span class="en-vivo">Disponible</span> para contrato de aprendizaje · abril 2027</p>
+            <h1 class="revelar">
+              Hola, soy <span class="degradado">Manuela</span>.
+              <span class="h1-linea">Llevo el software de la idea a producción <span class="ecualizador grande" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span></span>
+            </h1>
+            <p class="lema revelar">
+              Desarrolladora backend y full stack en Medellín. Diseño, programo, pruebo y despliego aplicaciones completas con <strong>Java y Spring Boot</strong> o <strong>Node.js</strong>, sobre PostgreSQL y con React.
+            </p>
+            <div class="acciones revelar">
+              <a href="#proyectos" class="boton boton-principal">Ver mis proyectos <Icono nombre="flecha-abajo" /></a>
+              <a href={cv} class="boton boton-secundario" download>Descargar CV <Icono nombre="descarga" /></a>
+              <a href={github} class="icono-redondo" target="_blank" rel="noopener" aria-label="GitHub"><Icono nombre="github" /></a>
+              <a href={linkedin} class="icono-redondo" target="_blank" rel="noopener" aria-label="LinkedIn"><Icono nombre="linkedin" /></a>
+            </div>
           </div>
 
+          <div class="retrato revelar">
+            <div class="retrato-marco">
+              <img src="/manuela.jpg" alt="Manuela Córdoba Robledo" width="738" height="1600" fetchpriority="high" />
+            </div>
+            <div class="flotante f1">
+              <span class="en-vivo">En vivo</span>
+              <strong>2 apps en producción</strong>
+            </div>
+            <div class="flotante f2 mono">
+              <span class="ok">✓</span> 119 pruebas pasando
+            </div>
+            <div class="flotante f3">
+              <img src="/tecnologias/java.svg" alt="" width="26" height="26" />
+              <img src="/tecnologias/spring.svg" alt="" width="26" height="26" />
+              <img src="/tecnologias/nodejs.svg" alt="" width="26" height="26" />
+              <img src="/tecnologias/react.svg" alt="" width="26" height="26" />
+              <img src="/tecnologias/postgresql.svg" alt="" width="26" height="26" />
+            </div>
+          </div>
+        </div>
+
+        <div class="contenedor">
           <dl class="cifras revelar">
             <div><dt>2</dt><dd>apps en producción</dd></div>
             <div><dt>119</dt><dd>pruebas automáticas</dd></div>
             <div><dt>12</dt><dd>Pull Requests revisados</dd></div>
-            <div><dt>2</dt><dd>ecosistemas: Java y Node.js</dd></div>
+            <div><dt>8+</dt><dd>proyectos en GitHub</dd></div>
           </dl>
         </div>
       </section>
 
+      <!-- Cinta de tecnologías -->
+      <div class="cinta" aria-label="Tecnologías con las que trabajo">
+        <div class="cinta-pista">
+          {[...cinta, ...cinta].map((t, i) => (
+            <span class="cinta-item" aria-hidden={i >= cinta.length ? 'true' : undefined}>
+              <img src={`/tecnologias/${t.logo}.svg`} alt="" width="22" height="22" loading="lazy" class={t.oscuro ? 'invertir' : undefined} />
+              {t.nombre}
+            </span>
+          ))}
+        </div>
+      </div>
+
       <!-- Proyectos -->
       <section id="proyectos" class="seccion">
         <div class="contenedor">
-          <span class="etiqueta">Proyectos</span>
+          <span class="etiqueta">Proyectos destacados</span>
           <h2 class="titulo-seccion">Apps reales, <span class="degradado">en vivo</span>.</h2>
           <p class="intro-seccion">
-            No son capturas bonitas: puedes entrar y usarlas ahora mismo con un clic, sin registrarte. Cada una resuelve un problema
-            concreto y tiene pruebas, CI y despliegue.
+            No son capturas bonitas: puedes entrar y usarlas ahora mismo con un clic, sin registrarte. Cada una resuelve un problema concreto y tiene pruebas, CI y despliegue.
           </p>
 
           <div class="lista-proyectos">
@@ -95,15 +133,10 @@ const descripcion =
               <article class={`proyecto revelar ${i % 2 === 1 ? 'invertido' : ''}`} style={`--color:${p.color}`}>
                 <div class="proyecto-visual">
                   <div class="ventana">
-                    <div class="ventana-barra" aria-hidden="true"><span></span><span></span><span></span></div>
+                    <div class="ventana-barra" aria-hidden="true"><span></span><span></span><span></span><em>{p.demo.replace('https://', '')}</em></div>
                     <img src={p.imagen} alt={`Captura de ${p.nombre}`} loading="lazy" width="1440" height="900" />
                   </div>
-                  <img
-                    class={p.extraEsCelular ? 'extra celular' : 'extra'}
-                    src={p.imagenExtra}
-                    alt={`Otra vista de ${p.nombre}`}
-                    loading="lazy"
-                  />
+                  <img class={p.extraEsCelular ? 'extra celular' : 'extra'} src={p.imagenExtra} alt={`Otra vista de ${p.nombre}`} loading="lazy" />
                 </div>
 
                 <div class="proyecto-texto">
@@ -134,6 +167,24 @@ const descripcion =
               </article>
             ))}
           </div>
+
+          <!-- Otros proyectos -->
+          <div class="otros">
+            <h3 class="otros-titulo revelar">Más proyectos en mi GitHub</h3>
+            <div class="otros-grid">
+              {otros.map((o) => (
+                <a class="otro revelar" href={o.enlace} target="_blank" rel="noopener">
+                  <div class="otro-cabecera">
+                    <Icono nombre="carpeta" />
+                    <Icono nombre="externo" />
+                  </div>
+                  <h4>{o.nombre}</h4>
+                  <p>{o.texto}</p>
+                  <ul>{o.etiquetas.map((e) => <li>{e}</li>)}</ul>
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -154,6 +205,17 @@ const descripcion =
               </li>
             ))}
           </ol>
+
+          <div class="terminal revelar" aria-label="Ejemplo de un cambio pasando por integración continua">
+            <div class="terminal-barra"><span></span><span></span><span></span><em>manuela@medellin: ~/CuentasClaras</em></div>
+            <pre><code><span class="t l1"><b>$</b> git push origin feature/presupuestos</span>
+<span class="t l2"><i>→</i> Pull Request abierto: “Presupuestos con alerta al 80 %”</span>
+<span class="t l3"><em class="ok">✓</em> Backend (Maven + Testcontainers) · 72 pruebas pasaron</span>
+<span class="t l4"><em class="ok">✓</em> Frontend (lint + build)</span>
+<span class="t l5"><em class="ok">✓</em> Revisión aprobada · merge a main</span>
+<span class="t l6"><em class="ok">✓</em> Desplegado en <u>cuentasclaras-demo.vercel.app</u></span>
+<span class="t l7"><b>$</b> <span class="cursor"></span></span></code></pre>
+          </div>
         </div>
       </section>
 
@@ -166,7 +228,14 @@ const descripcion =
             {stack.map((g) => (
               <div class="grupo revelar">
                 <h3>{g.grupo}</h3>
-                <ul class="chips">{g.items.map((s) => <li class="chip">{s}</li>)}</ul>
+                <ul class="logos">
+                  {g.items.map((t) => (
+                    <li>
+                      <span class="logo-baldosa"><img src={`/tecnologias/${t.logo}.svg`} alt="" width="40" height="40" loading="lazy" /></span>
+                      {t.nombre}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
@@ -179,29 +248,29 @@ const descripcion =
           <div class="revelar">
             <span class="etiqueta">Sobre mí</span>
             <h2 class="titulo-seccion">Me gusta que las cosas <span class="degradado">funcionen de verdad</span>.</h2>
-            <figure class="foto">
-              <img src="/manuela.jpg" alt="Manuela Córdoba Robledo" width="738" height="1600" loading="lazy" />
-            </figure>
-          </div>
-          <div class="sobre-mi-texto revelar">
-            <p>
-              Estudio Tecnología en Análisis y Desarrollo de Software en el SENA (Centro de Tecnología de la Manufactura Avanzada,
-              Medellín). Me enfoco en el backend, pero disfruto llevar un proyecto completo: entender el problema, diseñar los datos,
-              programar, probar y dejarlo en internet.
+            <p class="sobre-mi-p">
+              Estudio Tecnología en Análisis y Desarrollo de Software en el SENA (Centro de Tecnología de la Manufactura Avanzada, Medellín). Me enfoco en el backend, pero disfruto llevar un proyecto completo: entender el problema, diseñar los datos, programar, probar y dejarlo en internet.
             </p>
-            <p>
-              Me importa el detalle que no se ve: que la plata cuadre al centavo, que dos personas no puedan reservar el mismo cupo y
-              que una contraseña nunca termine en el código. Trabajo con Git por ramas y Pull Requests, y aprendo rápido de la
-              revisión de otros.
+            <p class="sobre-mi-p">
+              Me importa el detalle que no se ve: que la plata cuadre al centavo, que dos personas no puedan reservar el mismo cupo y que una contraseña nunca termine en el código.
             </p>
             <ul class="datos">
               <li><span>Ubicación</span>Medellín, Colombia</li>
-              <li><span>Formación</span>Tecnología ADSO · SENA, 2024 – 2027</li>
               <li><span>Busco</span>Contrato de aprendizaje desde abril de 2027</li>
               <li><span>Modalidad</span>Presencial, híbrido o remoto</li>
               <li><span>Idiomas</span>Español nativo · Inglés A2 (en formación)</li>
             </ul>
           </div>
+
+          <ol class="camino revelar" aria-label="Mi camino">
+            {camino.map((c) => (
+              <li class={c.destacado ? 'destacado' : ''}>
+                <span class="camino-fecha">{c.fecha}</span>
+                <h3>{c.titulo}</h3>
+                <p>{c.texto}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
@@ -215,18 +284,26 @@ const descripcion =
               Si buscas una aprendiz que llegue a construir, probar y aprender desde el primer día, hablemos.
             </p>
             <div class="acciones centradas">
-              <a href={`mailto:${correo}`} class="boton boton-principal"><Icono nombre="correo" /> {correo}</a>
+              <a href={`mailto:${correo}`} class="boton boton-principal"><Icono nombre="correo" /> Escríbeme</a>
               <a href={linkedin} class="boton boton-secundario" target="_blank" rel="noopener"><Icono nombre="linkedin" /> LinkedIn</a>
               <a href={github} class="boton boton-secundario" target="_blank" rel="noopener"><Icono nombre="github" /> GitHub</a>
+              <a href={cv} class="boton boton-secundario" download><Icono nombre="descarga" /> Hoja de vida</a>
             </div>
+            <p class="correo-visible">{correo}</p>
           </div>
         </div>
       </section>
     </main>
 
+    <!-- Barra flotante: aparece al bajar y se esconde al llegar a Contacto -->
+    <div class="barra-flotante" id="barra" aria-hidden="true">
+      <a href="#contacto" class="boton boton-secundario" tabindex="-1">Contactar</a>
+      <a href={cv} class="boton boton-principal" download tabindex="-1">Descargar CV</a>
+    </div>
+
     <footer class="pie">
       <div class="contenedor pie-interior">
-        <span>© 2026 Manuela Córdoba Robledo</span>
+        <span>© 2026 Manuela Córdoba Robledo · Medellín</span>
         <span>Hecho con Astro y mucho ritmo · <a href="https://github.com/robledocordoba123-cmyk/portafolio" target="_blank" rel="noopener">código de este sitio</a></span>
       </div>
     </footer>
@@ -245,6 +322,21 @@ const descripcion =
         { threshold: 0.12 },
       );
       document.querySelectorAll('.revelar').forEach((el) => observador.observe(el));
+
+      // Barra flotante: visible entre la portada y la sección de contacto.
+      const barra = document.getElementById('barra');
+      const portada = document.getElementById('inicio');
+      const contacto = document.getElementById('contacto');
+      let pasoPortada = false;
+      let enContacto = false;
+      const actualizarBarra = () => {
+        const mostrar = pasoPortada && !enContacto;
+        barra.classList.toggle('mostrar', mostrar);
+        barra.setAttribute('aria-hidden', String(!mostrar));
+        barra.querySelectorAll('a').forEach((a) => a.setAttribute('tabindex', mostrar ? '0' : '-1'));
+      };
+      new IntersectionObserver(([e]) => { pasoPortada = !e.isIntersecting; actualizarBarra(); }).observe(portada);
+      new IntersectionObserver(([e]) => { enContacto = e.isIntersecting; actualizarBarra(); }, { threshold: 0.2 }).observe(contacto);
     </script>
   </body>
 </html>
@@ -252,7 +344,7 @@ const descripcion =
 <style>
   /* Navegación */
   .nav {
-    position: sticky; top: 0; z-index: 10;
+    position: sticky; top: 0; z-index: 20;
     background: rgba(5, 6, 5, .75); backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(35, 43, 37, .7);
   }
@@ -261,30 +353,32 @@ const descripcion =
   .ecualizador.pequeno { height: 18px; gap: 3px; }
   .ecualizador.pequeno span { width: 3px; }
   nav { display: flex; gap: 28px; font-size: 15px; color: var(--suave); }
+  nav a { transition: color .2s; }
   nav a:hover { color: var(--texto); }
   .nav-contacto { color: var(--texto); }
 
   /* Portada */
-  .portada { position: relative; padding: 120px 0 100px; overflow: hidden; }
+  .portada { position: relative; padding: 90px 0 70px; overflow: hidden; }
   .brillo {
-    position: absolute; inset: -30% -10% auto auto; width: 720px; height: 720px;
-    background: radial-gradient(circle, rgba(16, 185, 129, .28), transparent 60%);
+    position: absolute; inset: -20% -10% auto auto; width: 760px; height: 760px;
+    background: radial-gradient(circle, rgba(16, 185, 129, .26), transparent 60%);
     filter: blur(20px); pointer-events: none;
   }
   .brillo::after {
-    content: ''; position: absolute; left: -380px; top: 260px; width: 520px; height: 520px;
-    background: radial-gradient(circle, rgba(74, 222, 128, .16), transparent 60%);
+    content: ''; position: absolute; left: -520px; top: 320px; width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(74, 222, 128, .12), transparent 60%);
   }
-  .portada-interior { position: relative; }
+  .portada-interior { position: relative; display: grid; grid-template-columns: 1.2fr .8fr; gap: 50px; align-items: center; }
   .disponible {
     display: inline-flex; gap: 10px; align-items: center; flex-wrap: wrap;
     padding: 8px 16px; border-radius: 999px; background: var(--superficie); border: 1px solid var(--borde);
-    font-size: 14px; color: var(--suave); margin-bottom: 30px;
+    font-size: 14px; color: var(--suave); margin-bottom: 28px;
   }
-  h1 { font-size: clamp(42px, 7.2vw, 84px); max-width: 950px; margin-bottom: 26px; }
-  h1 .ecualizador.grande { height: 0.8em; gap: 6px; margin-left: 12px; vertical-align: baseline; }
-  h1 .ecualizador.grande span { width: 0.13em; }
-  .lema { font-size: clamp(18px, 2.2vw, 21px); color: var(--suave); max-width: 700px; margin-bottom: 36px; }
+  h1 { font-size: clamp(40px, 5.6vw, 72px); margin-bottom: 26px; }
+  .h1-linea { display: block; }
+  h1 .ecualizador.grande { height: 0.72em; gap: 5px; margin-left: 8px; vertical-align: baseline; }
+  h1 .ecualizador.grande span { width: 0.12em; }
+  .lema { font-size: clamp(17px, 1.9vw, 20px); color: var(--suave); max-width: 620px; margin-bottom: 34px; }
   .lema strong { color: var(--texto); font-weight: 600; }
   .acciones { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
   .acciones.centradas { justify-content: center; }
@@ -293,6 +387,34 @@ const descripcion =
     border: 1px solid var(--borde); background: var(--superficie); transition: border-color .2s, transform .2s;
   }
   .icono-redondo:hover { border-color: var(--acento); transform: translateY(-2px); }
+
+  /* Retrato con tarjetas flotantes */
+  .retrato { position: relative; justify-self: center; width: min(380px, 100%); }
+  .retrato-marco {
+    aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden; position: relative;
+    border: 1px solid var(--borde); background: var(--superficie);
+    box-shadow: 0 40px 100px -40px rgba(16, 185, 129, .6);
+  }
+  .retrato-marco::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(5, 6, 5, .55));
+  }
+  .retrato-marco img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
+  .flotante {
+    position: absolute; display: flex; align-items: center; gap: 10px;
+    padding: 12px 16px; border-radius: 16px;
+    background: rgba(14, 17, 15, .82); backdrop-filter: blur(12px);
+    border: 1px solid var(--borde); box-shadow: 0 20px 40px -12px rgba(0, 0, 0, .7);
+    font-size: 14px; white-space: nowrap; animation: flotar 6s ease-in-out infinite;
+  }
+  .flotante strong { font-weight: 600; }
+  .f1 { top: 34px; left: -70px; flex-direction: column; align-items: flex-start; gap: 2px; }
+  .f2 { top: 46%; right: -60px; animation-delay: -2s; }
+  .f3 { bottom: 34px; left: -40px; gap: 8px; animation-delay: -4s; }
+  .mono { font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+  .ok { color: var(--acento); font-weight: 700; font-style: normal; }
+  @keyframes flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
   .cifras {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 70px;
     background: var(--borde); border: 1px solid var(--borde); border-radius: var(--radio); overflow: hidden;
@@ -301,8 +423,19 @@ const descripcion =
   .cifras dt { font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; }
   .cifras dd { color: var(--suave); font-size: 14px; }
 
+  /* Cinta de tecnologías */
+  .cinta {
+    overflow: hidden; border-block: 1px solid var(--borde); background: var(--superficie); padding: 18px 0;
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  }
+  .cinta-pista { display: flex; gap: 44px; width: max-content; animation: desfile 45s linear infinite; }
+  .cinta:hover .cinta-pista { animation-play-state: paused; }
+  .cinta-item { display: inline-flex; align-items: center; gap: 10px; color: var(--suave); font-size: 15px; font-weight: 500; white-space: nowrap; }
+  .cinta-item .invertir { filter: invert(1); }
+  @keyframes desfile { to { transform: translateX(-50%); } }
+
   /* Proyectos */
-  .lista-proyectos { display: grid; gap: 90px; margin-top: 64px; }
+  .lista-proyectos { display: grid; gap: 100px; margin-top: 64px; }
   .proyecto { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
   .proyecto.invertido .proyecto-visual { order: 2; }
   .proyecto-visual { position: relative; padding-bottom: 40px; }
@@ -312,8 +445,13 @@ const descripcion =
     transition: transform .4s ease;
   }
   .proyecto:hover .ventana { transform: translateY(-6px) rotate(-0.4deg); }
-  .ventana-barra { display: flex; gap: 6px; padding: 10px 14px; background: var(--superficie-2); }
+  .ventana-barra { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: var(--superficie-2); }
   .ventana-barra span { width: 10px; height: 10px; border-radius: 50%; background: var(--borde); }
+  .ventana-barra em {
+    margin-left: 12px; flex: 1; font-style: normal; font-size: 12px; color: var(--suave);
+    background: var(--bg); border-radius: 6px; padding: 3px 10px; font-family: 'JetBrains Mono', monospace;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
   .extra {
     position: absolute; right: -18px; bottom: 0; width: 48%;
     border-radius: 12px; border: 1px solid var(--borde); box-shadow: 0 20px 50px -10px rgba(0, 0, 0, .7);
@@ -328,9 +466,25 @@ const descripcion =
   .mini-cifras strong { color: var(--texto); font-family: 'Space Grotesk', sans-serif; font-size: 18px; }
   .chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
 
+  /* Otros proyectos */
+  .otros { margin-top: 110px; }
+  .otros-titulo { font-size: 28px; margin-bottom: 26px; }
+  .otros-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .otro {
+    display: flex; flex-direction: column; padding: 24px; border-radius: var(--radio);
+    background: var(--superficie); border: 1px solid var(--borde);
+    transition: transform .3s, border-color .3s;
+  }
+  .otro:hover { transform: translateY(-5px); border-color: var(--acento-2); }
+  .otro-cabecera { display: flex; justify-content: space-between; color: var(--acento); margin-bottom: 18px; }
+  .otro-cabecera :global(svg:last-child) { color: var(--suave); }
+  .otro h4 { font-family: 'Space Grotesk', sans-serif; font-size: 20px; margin-bottom: 8px; }
+  .otro p { color: var(--suave); font-size: 15px; flex: 1; }
+  .otro ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--suave); }
+
   /* Ritmo */
-  .ritmo { background: linear-gradient(180deg, transparent, var(--superficie) 30%, var(--superficie) 70%, transparent); }
-  .pasos { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 54px; counter-reset: none; }
+  .ritmo { background: linear-gradient(180deg, transparent, var(--superficie) 25%, var(--superficie) 75%, transparent); }
+  .pasos { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 54px; }
   .paso {
     position: relative; padding: 28px 24px; border-radius: var(--radio);
     background: var(--bg); border: 1px solid var(--borde); transition: border-color .3s, transform .3s;
@@ -343,24 +497,68 @@ const descripcion =
   .paso h3 { font-size: 22px; margin-bottom: 8px; }
   .paso p { color: var(--suave); font-size: 15px; }
 
-  /* Stack */
+  /* Terminal */
+  .terminal {
+    margin-top: 40px; border-radius: 16px; overflow: hidden; border: 1px solid var(--borde);
+    background: #030403; box-shadow: 0 40px 80px -50px rgba(16, 185, 129, .5);
+  }
+  .terminal-barra { display: flex; align-items: center; gap: 6px; padding: 12px 16px; background: var(--superficie-2); }
+  .terminal-barra span { width: 11px; height: 11px; border-radius: 50%; background: var(--borde); }
+  .terminal-barra span:nth-child(1) { background: #ef4444; }
+  .terminal-barra span:nth-child(2) { background: #eab308; }
+  .terminal-barra span:nth-child(3) { background: #22c55e; }
+  .terminal-barra em { margin-left: 12px; font-style: normal; font-size: 13px; color: var(--suave); font-family: 'JetBrains Mono', monospace; }
+  .terminal pre { padding: 22px 24px; font-family: 'JetBrains Mono', monospace; font-size: 14.5px; line-height: 1.9; color: #d7e3da; overflow-x: auto; }
+  .terminal b { color: var(--acento); }
+  .terminal i { color: #60a5fa; font-style: normal; }
+  .terminal u { text-decoration-color: var(--acento); text-underline-offset: 3px; }
+  .t { display: inline-block; opacity: 0; transform: translateX(-6px); }
+  .terminal.visible .t { animation: linea .4s ease forwards; }
+  .terminal.visible .l1 { animation-delay: .2s; }
+  .terminal.visible .l2 { animation-delay: .9s; }
+  .terminal.visible .l3 { animation-delay: 1.7s; }
+  .terminal.visible .l4 { animation-delay: 2.3s; }
+  .terminal.visible .l5 { animation-delay: 2.9s; }
+  .terminal.visible .l6 { animation-delay: 3.5s; }
+  .terminal.visible .l7 { animation-delay: 4.1s; }
+  @keyframes linea { to { opacity: 1; transform: none; } }
+  /* Sin animaciones (preferencia del sistema): las líneas se ven completas desde el inicio. */
+  @media (prefers-reduced-motion: reduce) { .t { opacity: 1; transform: none; } .flotante { animation: none; } }
+  .cursor { display: inline-block; width: 9px; height: 18px; background: var(--acento); vertical-align: -3px; animation: parpadeo 1s steps(1) infinite; }
+  @keyframes parpadeo { 50% { opacity: 0; } }
+
+  /* Stack con logos */
   .grupos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 44px; }
-  .grupo { padding: 26px; border-radius: var(--radio); background: var(--superficie); border: 1px solid var(--borde); }
-  .grupo h3 { font-size: 20px; margin-bottom: 16px; }
-  .grupo .chips { margin-bottom: 0; }
+  .grupo { padding: 28px; border-radius: var(--radio); background: var(--superficie); border: 1px solid var(--borde); }
+  .grupo h3 { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--suave); margin-bottom: 20px; font-family: 'Inter', sans-serif; }
+  .logos { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 18px 10px; }
+  .logos li { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; font-size: 13.5px; color: var(--texto); }
+  .logo-baldosa {
+    display: grid; place-items: center; width: 68px; height: 68px; border-radius: 18px;
+    background: linear-gradient(160deg, #f7faf8, #dfe7e2);
+    box-shadow: 0 12px 24px -10px rgba(0, 0, 0, .8), inset 0 -3px 0 rgba(0, 0, 0, .08);
+    transition: transform .3s;
+  }
+  .logos li:hover .logo-baldosa { transform: translateY(-4px) rotate(-4deg); }
 
   /* Sobre mí */
-  .sobre-mi { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
-  .foto {
-    margin-top: 30px; max-width: 380px; aspect-ratio: 4 / 5; overflow: hidden;
-    border-radius: 24px; border: 1px solid var(--borde);
-    box-shadow: 0 30px 80px -30px rgba(16, 185, 129, .45);
-  }
-  .foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
-  .sobre-mi-texto p { color: var(--suave); margin-bottom: 18px; font-size: 17.5px; }
+  .sobre-mi { display: grid; grid-template-columns: 1.1fr 1fr; gap: 70px; align-items: start; }
+  .sobre-mi-p { color: var(--suave); margin-bottom: 16px; font-size: 17.5px; }
   .datos { list-style: none; margin-top: 26px; border-top: 1px solid var(--borde); }
-  .datos li { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--borde); font-size: 15.5px; }
+  .datos li { display: flex; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--borde); font-size: 15.5px; }
   .datos span { width: 110px; flex-shrink: 0; color: var(--suave); }
+  .camino { list-style: none; position: relative; padding-left: 30px; margin-top: 40px; }
+  .camino::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--borde), var(--acento)); }
+  .camino li { position: relative; padding-bottom: 30px; }
+  .camino li::before {
+    content: ''; position: absolute; left: -30px; top: 6px; width: 16px; height: 16px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--acento-2);
+  }
+  .camino li.destacado::before { background: var(--acento); border-color: var(--acento); box-shadow: 0 0 0 6px rgba(74, 222, 128, .18); }
+  .camino-fecha { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--acento); }
+  .camino h3 { font-size: 21px; margin: 4px 0; }
+  .camino p { color: var(--suave); font-size: 15px; }
+  .camino li.destacado h3 { color: var(--acento); }
 
   /* Contacto */
   .contacto {
@@ -371,25 +569,46 @@ const descripcion =
   .contacto .ecualizador { height: 40px; gap: 6px; margin-bottom: 22px; }
   .contacto .ecualizador span { width: 7px; }
   .contacto .intro-seccion { margin: 0 auto 32px; }
+  .correo-visible { margin-top: 22px; color: var(--suave); font-family: 'JetBrains Mono', monospace; font-size: 14px; }
 
-  .pie { border-top: 1px solid var(--borde); padding: 28px 0; color: var(--suave); font-size: 14px; }
+  /* Barra flotante */
+  .barra-flotante {
+    position: fixed; left: 50%; bottom: 22px; z-index: 30; display: flex; gap: 8px; padding: 7px;
+    border-radius: 999px; background: rgba(14, 17, 15, .85); backdrop-filter: blur(14px);
+    border: 1px solid var(--borde); box-shadow: 0 20px 50px -10px rgba(0, 0, 0, .8);
+    transform: translate(-50%, 140%); opacity: 0; transition: transform .45s cubic-bezier(.2, .8, .2, 1), opacity .3s;
+  }
+  .barra-flotante.mostrar { transform: translate(-50%, 0); opacity: 1; }
+  .barra-flotante .boton { padding: 10px 20px; font-size: 14px; }
+
+  .pie { border-top: 1px solid var(--borde); padding: 28px 0 100px; color: var(--suave); font-size: 14px; }
   .pie-interior { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
   .pie a { color: var(--texto); text-decoration: underline; text-underline-offset: 3px; }
 
+  @media (max-width: 980px) {
+    .portada-interior { grid-template-columns: 1fr; gap: 70px; }
+    .retrato { width: min(340px, 78%); }
+    .f1 { left: -46px; } .f2 { right: -46px; } .f3 { left: -24px; }
+    .otros-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 900px) {
     nav a:not(.nav-contacto) { display: none; }
     .proyecto, .proyecto.invertido { grid-template-columns: 1fr; gap: 36px; }
     .proyecto.invertido .proyecto-visual { order: 0; }
     .pasos { grid-template-columns: repeat(2, 1fr); }
     .sobre-mi { grid-template-columns: 1fr; gap: 10px; }
-    .solo-escritorio { display: none; }
+    .grupos { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
-    .portada { padding: 70px 0 70px; }
+    .portada { padding: 56px 0 50px; }
     .cifras { grid-template-columns: repeat(2, 1fr); }
-    .pasos, .grupos { grid-template-columns: 1fr; }
+    .pasos, .otros-grid { grid-template-columns: 1fr; }
     .proyecto h3 { font-size: 32px; }
     .extra { right: -6px; }
-    .contacto .boton-principal { font-size: 13px; }
+    .retrato { width: 72%; }
+    .flotante { font-size: 12px; padding: 9px 12px; }
+    .f1 { left: -34px; top: 18px; } .f2 { right: -34px; } .f3 { left: -18px; bottom: 18px; }
+    .f3 img { width: 20px; height: 20px; }
+    .terminal pre { font-size: 12px; }
   }
 </style>
