@@ -126,7 +126,9 @@ export const stack = [
       { nombre: 'Spring Boot', logo: 'spring' },
       { nombre: 'Node.js', logo: 'nodejs' },
       { nombre: 'Express', logo: 'express', oscuro: true },
-      { nombre: 'Prisma', logo: 'prisma', oscuro: true },
+      { nombre: 'PHP', logo: 'php' },
+      { nombre: 'Python', logo: 'python' },
+      { nombre: 'FastAPI', logo: 'fastapi' },
     ],
   },
   {
@@ -144,7 +146,8 @@ export const stack = [
     items: [
       { nombre: 'PostgreSQL', logo: 'postgresql' },
       { nombre: 'MySQL', logo: 'mysql' },
-      { nombre: 'Python', logo: 'python' },
+      { nombre: 'SQLite', logo: 'sqlite' },
+      { nombre: 'Prisma', logo: 'prisma', oscuro: true },
     ],
   },
   {
@@ -156,9 +159,17 @@ export const stack = [
       { nombre: 'GitHub Actions', logo: 'githubactions' },
       { nombre: 'Docker', logo: 'docker' },
       { nombre: 'Kubernetes', logo: 'kubernetes' },
+      { nombre: 'Nginx', logo: 'nginx' },
+      { nombre: 'Linux', logo: 'linux' },
       { nombre: 'Vercel', logo: 'vercel', oscuro: true },
     ],
   },
+];
+
+// Lo que no es una herramienta con logo: cómo analizo, diseño y aseguro un sistema.
+export const practicas = [
+  { grupo: 'Análisis y diseño', items: ['Historias de usuario', 'Requisitos', 'Casos de uso (UML)', 'Diagramas de secuencia', 'Modelo entidad-relación', 'BPMN', 'Scrum', 'draw.io'] },
+  { grupo: 'Seguridad informática', items: ['Matriz de riesgos', 'Plan de contingencia', 'Implantación segura', 'Verificación preproducción', 'JWT y roles', 'Manejo de secretos'] },
 ];
 
 export const camino = [
