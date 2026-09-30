@@ -52,6 +52,31 @@ export const proyectos = [
     extraEsCelular: false,
     color: '#a3e635',
   },
+  {
+    id: 'elcuaderno',
+    nombre: 'ElCuaderno',
+    anio: '2026',
+    tipo: 'Proyecto personal',
+    frase: 'El cuaderno de fiados de la tienda de barrio, ahora en el celular.',
+    problema:
+      'En la tienda de barrio se fía y se anota en un cuaderno. Ahí se pierden las cuentas: nadie sabe cuánto debe cada vecino, qué se está acabando ni cuánto se ganó en el día.',
+    solucion:
+      'Un punto de venta para el celular del mostrador: ventas en efectivo, Nequi o fiado, inventario que se descuenta solo, cupo de fiado por cliente, abonos y el cierre de caja del día con la ganancia real.',
+    reto:
+      'TypeScript de punta a punta con los mismos esquemas Zod validando el formulario y la API, y sin sobreventa ni fiados por encima del cupo aunque dos cajeros vendan al mismo tiempo (UPDATE condicional y SELECT ... FOR UPDATE).',
+    cifras: [
+      { valor: '27', texto: 'pruebas contra PostgreSQL real' },
+      { valor: '2', texto: 'roles: dueña y cajero' },
+      { valor: '1', texto: 'esquema Zod por regla, en front y back' },
+    ],
+    stack: ['TypeScript', 'NestJS', 'Drizzle ORM', 'PostgreSQL', 'Zod', 'React', 'TanStack Query', 'Tailwind CSS', 'Jest'],
+    demo: 'https://elcuaderno-demo.vercel.app',
+    codigo: `${gh}/ElCuaderno`,
+    imagen: '/proyectos/elcuaderno-vender.jpg',
+    imagenExtra: '/proyectos/elcuaderno-celular.png',
+    extraEsCelular: true,
+    color: '#f59e0b',
+  },
 ];
 
 // Proyectos más pequeños, de práctica o de las competencias del SENA.
@@ -125,6 +150,7 @@ export const stack = [
       { nombre: 'Java', logo: 'java' },
       { nombre: 'Spring Boot', logo: 'spring' },
       { nombre: 'Node.js', logo: 'nodejs' },
+      { nombre: 'NestJS', logo: 'nestjs' },
       { nombre: 'Express', logo: 'express', oscuro: true },
       { nombre: 'C#', logo: 'csharp' },
       { nombre: '.NET', logo: 'dotnet' },
@@ -138,6 +164,7 @@ export const stack = [
     grupo: 'Frontend',
     items: [
       { nombre: 'React', logo: 'react' },
+      { nombre: 'TypeScript', logo: 'typescript' },
       { nombre: 'JavaScript', logo: 'javascript' },
       { nombre: 'Tailwind CSS', logo: 'tailwindcss' },
       { nombre: 'Astro', logo: 'astro' },
@@ -181,6 +208,6 @@ export const camino = [
   { fecha: 'Julio 2024', titulo: 'Empiezo en el SENA', texto: 'Tecnología en Análisis y Desarrollo de Software, CTMA Medellín.' },
   { fecha: '2025', titulo: 'Bases sólidas', texto: 'Java, bases de datos, UML, historias de usuario y mis primeras APIs REST.' },
   { fecha: '2026', titulo: 'DevOps y seguridad', texto: 'Docker, Nginx, Kubernetes, integración continua y seguridad informática aplicada.' },
-  { fecha: 'Sep 2026', titulo: 'Dos apps en producción', texto: 'RitmoApp y CuentasClaras en vivo, con pruebas, CI y despliegue.' },
+  { fecha: 'Sep 2026', titulo: 'Tres apps en producción', texto: 'RitmoApp, CuentasClaras y ElCuaderno en vivo, con pruebas, CI y despliegue.' },
   { fecha: 'Abril 2027', titulo: 'Etapa productiva', texto: 'Busco la empresa donde aportar y seguir creciendo. ¿Será la tuya?', destacado: true },
 ];
