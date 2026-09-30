@@ -28,6 +28,19 @@ const cinta = stack.flatMap((g) => g.items);
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#050605" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href="https://manuela-cordoba.vercel.app/" />
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: 'Manuela Córdoba Robledo',
+      jobTitle: 'Desarrolladora de Software Backend y Full Stack',
+      url: 'https://manuela-cordoba.vercel.app',
+      image: 'https://manuela-cordoba.vercel.app/manuela.jpg',
+      address: { '@type': 'PostalAddress', addressLocality: 'Medellín', addressCountry: 'CO' },
+      alumniOf: { '@type': 'EducationalOrganization', name: 'Servicio Nacional de Aprendizaje (SENA)' },
+      knowsAbout: ['Java', 'Spring Boot', 'Node.js', 'React', 'PostgreSQL', 'Docker', 'C#', '.NET', 'Laravel'],
+      sameAs: [linkedin, github],
+    })} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
