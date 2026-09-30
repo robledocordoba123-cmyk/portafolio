@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://manuela-cordoba.vercel.app/sitemap.xml
