@@ -126,7 +126,10 @@ export const stack = [
       { nombre: 'Spring Boot', logo: 'spring' },
       { nombre: 'Node.js', logo: 'nodejs' },
       { nombre: 'Express', logo: 'express', oscuro: true },
+      { nombre: 'C#', logo: 'csharp' },
+      { nombre: '.NET', logo: 'dotnet' },
       { nombre: 'PHP', logo: 'php' },
+      { nombre: 'Laravel', logo: 'laravel' },
       { nombre: 'Python', logo: 'python' },
       { nombre: 'FastAPI', logo: 'fastapi' },
     ],
@@ -146,7 +149,9 @@ export const stack = [
     items: [
       { nombre: 'PostgreSQL', logo: 'postgresql' },
       { nombre: 'MySQL', logo: 'mysql' },
+      { nombre: 'SQL Server', logo: 'sqlserver' },
       { nombre: 'SQLite', logo: 'sqlite' },
+      { nombre: 'MongoDB', logo: 'mongodb' },
       { nombre: 'Prisma', logo: 'prisma', oscuro: true },
     ],
   },
@@ -168,7 +173,7 @@ export const stack = [
 
 // Lo que no es una herramienta con logo: cómo analizo, diseño y aseguro un sistema.
 export const practicas = [
-  { grupo: 'Análisis y diseño', items: ['Historias de usuario', 'Requisitos', 'Casos de uso (UML)', 'Diagramas de secuencia', 'Modelo entidad-relación', 'BPMN', 'Scrum', 'draw.io'] },
+  { grupo: 'Análisis y diseño', items: ['Historias de usuario', 'Requisitos', 'Propuesta técnica', 'Casos de uso (UML)', 'Diagramas de secuencia', 'Modelo entidad-relación', 'BPMN', 'Scrum', 'draw.io', 'Control de calidad', 'Investigación formativa'] },
   { grupo: 'Seguridad informática', items: ['Matriz de riesgos', 'Plan de contingencia', 'Implantación segura', 'Verificación preproducción', 'JWT y roles', 'Manejo de secretos'] },
 ];
 
