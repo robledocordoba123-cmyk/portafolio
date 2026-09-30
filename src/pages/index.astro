@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import Icono from '../components/Icono.astro';
-import { proyectos, otros, pasos, stack, camino } from '../data/proyectos.js';
+import { proyectos, otros, pasos, stack, practicas, camino } from '../data/proyectos.js';
 
 const correo = 'robledocordoba123@gmail.com';
 const linkedin = 'https://www.linkedin.com/in/manuela-c%C3%B3rdoba-robledo-145322418/';
@@ -224,6 +224,7 @@ const cinta = stack.flatMap((g) => g.items);
         <div class="contenedor">
           <span class="etiqueta">Stack</span>
           <h2 class="titulo-seccion">Con qué construyo.</h2>
+          <p class="intro-seccion">Lo que he aprendido en cinco trimestres del SENA y aplicado en proyectos reales: del análisis y el diseño hasta la seguridad y el despliegue.</p>
           <div class="grupos">
             {stack.map((g) => (
               <div class="grupo revelar">
@@ -236,6 +237,14 @@ const cinta = stack.flatMap((g) => g.items);
                     </li>
                   ))}
                 </ul>
+              </div>
+            ))}
+          </div>
+          <div class="practicas">
+            {practicas.map((p) => (
+              <div class="grupo revelar">
+                <h3>{p.grupo}</h3>
+                <ul class="chips">{p.items.map((i) => <li class="chip">{i}</li>)}</ul>
               </div>
             ))}
           </div>
@@ -539,6 +548,8 @@ const cinta = stack.flatMap((g) => g.items);
     box-shadow: 0 12px 24px -10px rgba(0, 0, 0, .8), inset 0 -3px 0 rgba(0, 0, 0, .08);
     transition: transform .3s;
   }
+  .practicas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 18px; }
+  .practicas .chips { margin-bottom: 0; }
   .logos li:hover .logo-baldosa { transform: translateY(-4px) rotate(-4deg); }
 
   /* Sobre mí */
@@ -597,7 +608,7 @@ const cinta = stack.flatMap((g) => g.items);
     .proyecto.invertido .proyecto-visual { order: 0; }
     .pasos { grid-template-columns: repeat(2, 1fr); }
     .sobre-mi { grid-template-columns: 1fr; gap: 10px; }
-    .grupos { grid-template-columns: 1fr; }
+    .grupos, .practicas { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
     .portada { padding: 56px 0 50px; }
