@@ -1,6 +1,11 @@
 ---
 import '../styles/global.css';
+import { Image } from 'astro:assets';
 import Icono from '../components/Icono.astro';
+import foto from '../assets/manuela.jpg';
+// Fuentes del título y del texto: se precargan para que el título no salte cuando llegan.
+import fuenteTitulos from '@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url';
+import fuenteTexto from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
 import { proyectos, otros, pasos, stack, practicas, camino } from '../data/proyectos.js';
 
 const correo = 'robledocordoba123@gmail.com';
@@ -24,10 +29,18 @@ const cinta = stack.flatMap((g) => g.items);
     <meta property="og:title" content="Manuela Córdoba Robledo · Desarrolladora de Software" />
     <meta property="og:description" content={descripcion} />
     <meta property="og:image" content="https://manuela-cordoba.vercel.app/og.png" />
+    <meta property="og:image:alt" content="Portafolio de Manuela Córdoba Robledo, desarrolladora de software" />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://manuela-cordoba.vercel.app/" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:site_name" content="Manuela Córdoba Robledo" />
+    <meta name="author" content="Manuela Córdoba Robledo" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#050605" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href={fuenteTitulos} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={fuenteTexto} as="font" type="font/woff2" crossorigin />
     <link rel="canonical" href="https://manuela-cordoba.vercel.app/" />
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
@@ -41,19 +54,13 @@ const cinta = stack.flatMap((g) => g.items);
       knowsAbout: ['Java', 'Spring Boot', 'Node.js', 'React', 'PostgreSQL', 'Docker', 'C#', '.NET', 'Laravel'],
       sameAs: [linkedin, github],
     })} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
   </head>
 
   <body>
     <!-- Navegación -->
     <header class="nav">
       <div class="contenedor nav-interior">
-        <a href="#inicio" class="marca" aria-label="Inicio">
+        <a href="#inicio" class="marca" title="Ir al inicio">
           <span class="ecualizador pequeno" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
           <span>manuela<span class="degradado">.dev</span></span>
         </a>
@@ -91,7 +98,7 @@ const cinta = stack.flatMap((g) => g.items);
 
           <div class="retrato revelar">
             <div class="retrato-marco">
-              <img src="/manuela.jpg" alt="Manuela Córdoba Robledo" width="738" height="1600" fetchpriority="high" />
+              <Image src={foto} alt="Manuela Córdoba Robledo" widths={[380, 560, 738]} sizes="(max-width: 420px) 100vw, 380px" loading="eager" fetchpriority="high" />
             </div>
             <p class="retrato-pie"><span class="en-vivo">En vivo</span> CuentasClaras, RitmoApp y ElCuaderno</p>
           </div>
@@ -134,9 +141,15 @@ const cinta = stack.flatMap((g) => g.items);
                 <div class="proyecto-visual">
                   <div class="ventana">
                     <div class="ventana-barra" aria-hidden="true"><span></span><span></span><span></span><em>{p.demo.replace('https://', '')}</em></div>
-                    <img src={p.imagen} alt={`Captura de ${p.nombre}`} loading="lazy" width="1440" height="900" />
+                    <Image src={p.imagen} alt={`Captura de ${p.nombre}`} widths={[480, 720, 1080, 1440]} sizes="(max-width: 900px) 92vw, 620px" />
                   </div>
-                  <img class={p.extraEsCelular ? 'extra celular' : 'extra'} src={p.imagenExtra} alt={`Otra vista de ${p.nombre}`} loading="lazy" />
+                  <Image
+                    class={p.extraEsCelular ? 'extra celular' : 'extra'}
+                    src={p.imagenExtra}
+                    alt={`Otra vista de ${p.nombre}`}
+                    widths={p.extraEsCelular ? [180, 360] : [320, 640]}
+                    sizes={p.extraEsCelular ? '170px' : '(max-width: 900px) 45vw, 300px'}
+                  />
                 </div>
 
                 <div class="proyecto-texto">
@@ -369,7 +382,8 @@ const cinta = stack.flatMap((g) => g.items);
   /* Portada */
   .portada { position: relative; padding: 90px 0 70px; overflow: hidden; }
   .brillo {
-    position: absolute; inset: -20% -10% auto auto; width: 760px; height: 760px;
+    /* Posición fija en px: si dependiera de la altura de la sección, se movería al cargar las fuentes. */
+    position: absolute; inset: -160px -10% auto auto; width: 760px; height: 760px;
     background: radial-gradient(circle, rgba(16, 185, 129, .26), transparent 60%);
     filter: blur(20px); pointer-events: none;
   }
@@ -414,7 +428,7 @@ const cinta = stack.flatMap((g) => g.items);
     margin: 18px auto 0; width: fit-content; padding: 9px 18px; border-radius: 999px;
     background: var(--superficie); border: 1px solid var(--borde); font-size: 14px; color: var(--suave);
   }
-  .mono { font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+  .mono { font-family: 'JetBrains Mono Variable', monospace; font-size: 13px; }
   .ok { color: var(--acento); font-weight: 700; font-style: normal; }
 
   .cifras {
@@ -422,7 +436,7 @@ const cinta = stack.flatMap((g) => g.items);
     background: var(--borde); border: 1px solid var(--borde); border-radius: var(--radio); overflow: hidden;
   }
   .cifras div { background: var(--bg); padding: 24px; }
-  .cifras dt { font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; }
+  .cifras dt { font-family: 'Space Grotesk Variable', sans-serif; font-size: 40px; font-weight: 700; }
   .cifras dd { color: var(--suave); font-size: 14px; }
 
   /* Cinta de tecnologías */
@@ -451,7 +465,7 @@ const cinta = stack.flatMap((g) => g.items);
   .ventana-barra span { width: 10px; height: 10px; border-radius: 50%; background: var(--borde); }
   .ventana-barra em {
     margin-left: 12px; flex: 1; font-style: normal; font-size: 12px; color: var(--suave);
-    background: var(--bg); border-radius: 6px; padding: 3px 10px; font-family: 'JetBrains Mono', monospace;
+    background: var(--bg); border-radius: 6px; padding: 3px 10px; font-family: 'JetBrains Mono Variable', monospace;
     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
   .extra {
@@ -465,7 +479,7 @@ const cinta = stack.flatMap((g) => g.items);
   .caso dt { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--color); margin-top: 14px; }
   .caso dd { color: var(--suave); font-size: 15.5px; }
   .mini-cifras { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 22px 0 16px; font-size: 14px; color: var(--suave); }
-  .mini-cifras strong { color: var(--texto); font-family: 'Space Grotesk', sans-serif; font-size: 18px; }
+  .mini-cifras strong { color: var(--texto); font-family: 'Space Grotesk Variable', sans-serif; font-size: 18px; }
   .chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
 
   /* Otros proyectos */
@@ -480,9 +494,9 @@ const cinta = stack.flatMap((g) => g.items);
   .otro:hover { transform: translateY(-5px); border-color: var(--acento-2); }
   .otro-cabecera { display: flex; justify-content: space-between; color: var(--acento); margin-bottom: 18px; }
   .otro-cabecera :global(svg:last-child) { color: var(--suave); }
-  .otro h4 { font-family: 'Space Grotesk', sans-serif; font-size: 20px; margin-bottom: 8px; }
+  .otro h4 { font-family: 'Space Grotesk Variable', sans-serif; font-size: 20px; margin-bottom: 8px; }
   .otro p { color: var(--suave); font-size: 15px; flex: 1; }
-  .otro ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 16px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--suave); }
+  .otro ul { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 16px; font-family: 'JetBrains Mono Variable', monospace; font-size: 12px; color: var(--suave); }
 
   /* Ritmo */
   .ritmo { background: linear-gradient(180deg, transparent, var(--superficie) 25%, var(--superficie) 75%, transparent); }
@@ -494,7 +508,7 @@ const cinta = stack.flatMap((g) => g.items);
   .paso:hover { border-color: var(--acento); transform: translateY(-4px); }
   .paso-numero {
     display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
-    background: var(--degradado); color: #04120a; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; margin-bottom: 18px;
+    background: var(--degradado); color: #04120a; font-family: 'Space Grotesk Variable', sans-serif; font-weight: 700; font-size: 20px; margin-bottom: 18px;
   }
   .paso h3 { font-size: 22px; margin-bottom: 8px; }
   .paso p { color: var(--suave); font-size: 15px; }
@@ -509,8 +523,8 @@ const cinta = stack.flatMap((g) => g.items);
   .terminal-barra span:nth-child(1) { background: #ef4444; }
   .terminal-barra span:nth-child(2) { background: #eab308; }
   .terminal-barra span:nth-child(3) { background: #22c55e; }
-  .terminal-barra em { margin-left: 12px; font-style: normal; font-size: 13px; color: var(--suave); font-family: 'JetBrains Mono', monospace; }
-  .terminal pre { padding: 22px 24px; font-family: 'JetBrains Mono', monospace; font-size: 14.5px; line-height: 1.9; color: #d7e3da; overflow-x: auto; }
+  .terminal-barra em { margin-left: 12px; font-style: normal; font-size: 13px; color: var(--suave); font-family: 'JetBrains Mono Variable', monospace; }
+  .terminal pre { padding: 22px 24px; font-family: 'JetBrains Mono Variable', monospace; font-size: 14.5px; line-height: 1.9; color: #d7e3da; overflow-x: auto; }
   .terminal b { color: var(--acento); }
   .terminal i { color: #60a5fa; font-style: normal; }
   .terminal u { text-decoration-color: var(--acento); text-underline-offset: 3px; }
@@ -532,7 +546,7 @@ const cinta = stack.flatMap((g) => g.items);
   /* Stack con logos */
   .grupos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 44px; }
   .grupo { padding: 28px; border-radius: var(--radio); background: var(--superficie); border: 1px solid var(--borde); }
-  .grupo h3 { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--suave); margin-bottom: 20px; font-family: 'Inter', sans-serif; }
+  .grupo h3 { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--suave); margin-bottom: 20px; font-family: 'Inter Variable', sans-serif; }
   .logos { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 18px 10px; }
   .logos li { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; font-size: 13.5px; color: var(--texto); }
   .logo-baldosa {
@@ -559,7 +573,7 @@ const cinta = stack.flatMap((g) => g.items);
     background: var(--bg); border: 2px solid var(--acento-2);
   }
   .camino li.destacado::before { background: var(--acento); border-color: var(--acento); box-shadow: 0 0 0 6px rgba(74, 222, 128, .18); }
-  .camino-fecha { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--acento); }
+  .camino-fecha { font-family: 'JetBrains Mono Variable', monospace; font-size: 13px; color: var(--acento); }
   .camino h3 { font-size: 21px; margin: 4px 0; }
   .camino p { color: var(--suave); font-size: 15px; }
   .camino li.destacado h3 { color: var(--acento); }
@@ -573,7 +587,7 @@ const cinta = stack.flatMap((g) => g.items);
   .contacto .ecualizador { height: 40px; gap: 6px; margin-bottom: 22px; }
   .contacto .ecualizador span { width: 7px; }
   .contacto .intro-seccion { margin: 0 auto 32px; }
-  .correo-visible { margin-top: 22px; color: var(--suave); font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+  .correo-visible { margin-top: 22px; color: var(--suave); font-family: 'JetBrains Mono Variable', monospace; font-size: 14px; }
 
   /* Barra flotante */
   .barra-flotante {
