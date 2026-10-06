@@ -72,7 +72,7 @@ export const proyectos = [
     stack: ['TypeScript', 'NestJS', 'Drizzle ORM', 'PostgreSQL', 'Zod', 'React', 'TanStack Query', 'Tailwind CSS', 'Jest'],
     demo: 'https://elcuaderno-demo.vercel.app',
     codigo: `${gh}/ElCuaderno`,
-    imagen: '/proyectos/elcuaderno-vender.jpg',
+    imagen: '/proyectos/elcuaderno-vender.png',
     imagenExtra: '/proyectos/elcuaderno-celular.png',
     extraEsCelular: true,
     color: '#f59e0b',
