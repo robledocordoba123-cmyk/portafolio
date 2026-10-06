@@ -1,3 +1,11 @@
+// Las capturas se importan para que Astro las optimice (WebP y varios tamaños).
+import ccResumen from '../assets/proyectos/cuentasclaras-resumen.png';
+import ccCelular from '../assets/proyectos/cuentasclaras-celular.png';
+import raPanel from '../assets/proyectos/ritmoapp-panel.png';
+import raCatalogo from '../assets/proyectos/ritmoapp-catalogo.png';
+import ecVender from '../assets/proyectos/elcuaderno-vender.png';
+import ecCelular from '../assets/proyectos/elcuaderno-celular.png';
+
 // Contenido del sitio. Para agregar un proyecto basta con sumar un objeto aquí.
 const gh = 'https://github.com/robledocordoba123-cmyk';
 
@@ -22,8 +30,8 @@ export const proyectos = [
     stack: ['Java 21', 'Spring Boot', 'Spring Security', 'JPA', 'Flyway', 'PostgreSQL', 'React', 'Testcontainers', 'Docker'],
     demo: 'https://cuentasclaras-demo.vercel.app',
     codigo: `${gh}/CuentasClaras`,
-    imagen: '/proyectos/cuentasclaras-resumen.png',
-    imagenExtra: '/proyectos/cuentasclaras-celular.png',
+    imagen: ccResumen,
+    imagenExtra: ccCelular,
     extraEsCelular: true,
     color: '#10b981',
   },
@@ -47,8 +55,8 @@ export const proyectos = [
     stack: ['Node.js', 'Express 5', 'Prisma', 'PostgreSQL', 'React', 'Tailwind CSS', 'JWT', 'Jest', 'GitHub Actions'],
     demo: 'https://ritmoapp-demo.vercel.app',
     codigo: `${gh}/RitmoApp`,
-    imagen: '/proyectos/ritmoapp-panel.png',
-    imagenExtra: '/proyectos/ritmoapp-catalogo.png',
+    imagen: raPanel,
+    imagenExtra: raCatalogo,
     extraEsCelular: false,
     color: '#a3e635',
   },
@@ -72,8 +80,8 @@ export const proyectos = [
     stack: ['TypeScript', 'NestJS', 'Drizzle ORM', 'PostgreSQL', 'Zod', 'React', 'TanStack Query', 'Tailwind CSS', 'Jest'],
     demo: 'https://elcuaderno-demo.vercel.app',
     codigo: `${gh}/ElCuaderno`,
-    imagen: '/proyectos/elcuaderno-vender.png',
-    imagenExtra: '/proyectos/elcuaderno-celular.png',
+    imagen: ecVender,
+    imagenExtra: ecCelular,
     extraEsCelular: true,
     color: '#f59e0b',
   },
