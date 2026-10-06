@@ -31,7 +31,7 @@ export const proyectos = [
     id: 'ritmoapp',
     nombre: 'RitmoApp',
     anio: '2026',
-    tipo: 'Proyecto formativo · SENA',
+    tipo: 'Proyecto de grado · SENA',
     frase: 'Plataforma SaaS para que las academias de baile dejen el cuaderno y el Excel.',
     problema:
       'Las academias de baile manejan clases, cupos y asistencia con cuadernos, hojas de cálculo y grupos de WhatsApp. Se cruzan horarios, se venden cupos de más y nadie sabe qué salón se usa.',
