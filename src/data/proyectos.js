@@ -23,7 +23,7 @@ export const proyectos = [
     reto:
       'Que la plata siempre cuadre: montos con BigDecimal (nunca double), saldos calculados y transferencias atómicas. Si una parte falla, no se guarda ninguna. Lo compruebo con una prueba que fuerza el error.',
     cifras: [
-      { valor: '72', texto: 'pruebas contra PostgreSQL real' },
+      { valor: '70', texto: 'pruebas contra PostgreSQL real' },
       { valor: '10', texto: 'Pull Requests con CI en verde' },
       { valor: '28', texto: 'endpoints documentados en Swagger' },
     ],
@@ -48,7 +48,7 @@ export const proyectos = [
     reto:
       'Sin sobrecupo aunque dos personas reserven el último cupo al mismo tiempo (UPDATE condicional dentro de una transacción), y cada academia totalmente aislada de las demás desde la capa de datos.',
     cifras: [
-      { valor: '47', texto: 'pruebas con Jest y Supertest' },
+      { valor: '90', texto: 'pruebas con Jest y Supertest' },
       { valor: '4', texto: 'roles con permisos distintos' },
       { valor: '0', texto: 'sobrecupos bajo concurrencia' },
     ],
