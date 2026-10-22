@@ -44,15 +44,15 @@ export const proyectos = [
     problema:
       'Las academias de baile manejan clases, cupos y asistencia con cuadernos, hojas de cálculo y grupos de WhatsApp. Se cruzan horarios, se venden cupos de más y nadie sabe qué salón se usa.',
     solucion:
-      'Una plataforma donde cada academia se registra sola, con cuatro roles: SuperAdmin, administrador, profesor y estudiante. Tiene salones, calendario de clases, reservas con cupos en tiempo real, asistencia y reportes de ocupación.',
+      'Una plataforma donde cada academia se registra sola, con cuatro roles: SuperAdmin, administrador, profesor y estudiante. Tiene salones, calendario de clases, reservas con cupos en tiempo real, asistencia con código QR, pagos y membresías, avisos por correo, bitácora de cambios y reportes.',
     reto:
       'Sin sobrecupo aunque dos personas reserven el último cupo al mismo tiempo (UPDATE condicional dentro de una transacción), y cada academia totalmente aislada de las demás desde la capa de datos.',
     cifras: [
-      { valor: '90', texto: 'pruebas con Jest y Supertest' },
+      { valor: '182', texto: 'pruebas con Jest, Supertest y Vitest' },
       { valor: '4', texto: 'roles con permisos distintos' },
       { valor: '0', texto: 'sobrecupos bajo concurrencia' },
     ],
-    stack: ['Node.js', 'Express 5', 'Prisma', 'PostgreSQL', 'React', 'Tailwind CSS', 'JWT', 'Jest', 'GitHub Actions'],
+    stack: ['Node.js', 'Express 5', 'Prisma', 'PostgreSQL', 'React', 'Tailwind CSS', 'JWT', 'Jest', 'Vitest', 'GitHub Actions'],
     demo: 'https://ritmoapp-demo.vercel.app',
     codigo: `${gh}/RitmoApp`,
     imagen: raPanel,
@@ -213,7 +213,7 @@ export const practicas = [
 ];
 
 export const camino = [
-  { fecha: 'Julio 2024', titulo: 'Empiezo en el SENA', texto: 'Tecnología en Análisis y Desarrollo de Software, CTMA Medellín.' },
+  { fecha: 'Julio 2025', titulo: 'Empiezo en el SENA', texto: 'Tecnología en Análisis y Desarrollo de Software, CTMA Medellín.' },
   { fecha: '2025', titulo: 'Bases sólidas', texto: 'Java, bases de datos, UML, historias de usuario y mis primeras APIs REST.' },
   { fecha: '2026', titulo: 'DevOps y seguridad', texto: 'Docker, Nginx, Kubernetes, integración continua y seguridad informática aplicada.' },
   { fecha: 'Sep 2026', titulo: 'Tres apps en producción', texto: 'RitmoApp, CuentasClaras y ElCuaderno en vivo, con pruebas, CI y despliegue.' },
