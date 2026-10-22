@@ -5,6 +5,8 @@ import raPanel from '../assets/proyectos/ritmoapp-panel.png';
 import raCatalogo from '../assets/proyectos/ritmoapp-catalogo.png';
 import ecVender from '../assets/proyectos/elcuaderno-vender.png';
 import ecCelular from '../assets/proyectos/elcuaderno-celular.png';
+import huInicio from '../assets/proyectos/huellitas-inicio.png';
+import huWhatsapp from '../assets/proyectos/huellitas-whatsapp-celular.png';
 
 // Contenido del sitio. Para agregar un proyecto basta con sumar un objeto aquí.
 const gh = 'https://github.com/robledocordoba123-cmyk';
@@ -85,6 +87,31 @@ export const proyectos = [
     extraEsCelular: true,
     color: '#f59e0b',
   },
+  {
+    id: 'huellitas',
+    nombre: 'Huellitas',
+    anio: '2026',
+    tipo: 'Proyecto para negocios',
+    frase: 'La web de una veterinaria que agenda citas sola, también por WhatsApp.',
+    problema:
+      'Las veterinarias de barrio reciben las citas por llamadas y por WhatsApp a cualquier hora. Los mensajes se pierden, se repiten las mismas preguntas todo el día y nadie tiene la agenda en un solo lugar.',
+    solucion:
+      'Una página web donde el cliente pide su cita en un minuto, un panel para que el negocio las atienda, y un asistente de WhatsApp que responde servicios y horarios, toma los datos de la cita y la deja en el mismo panel. Si hace falta, pasa la conversación a una persona.',
+    reto:
+      'Que el asistente sea seguro y no dependa de una IA: un motor de conversación propio guarda cada paso, el webhook de WhatsApp verifica la firma de Meta y la IA (Claude) es opcional, solo para entender mensajes libres.',
+    cifras: [
+      { valor: '20', texto: 'pruebas con Jest y Supertest' },
+      { valor: '2', texto: 'canales: web y WhatsApp' },
+      { valor: '1', texto: 'panel para todas las citas' },
+    ],
+    stack: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'WhatsApp Cloud API', 'Jest'],
+    demo: 'https://huellitas-veterinaria.vercel.app',
+    codigo: `${gh}/landing-panel-backend`,
+    imagen: huInicio,
+    imagenExtra: huWhatsapp,
+    extraEsCelular: true,
+    color: '#14b8a6',
+  },
 ];
 
 // Proyectos más pequeños, de práctica o de las competencias del SENA.
@@ -94,12 +121,6 @@ export const otros = [
     texto: 'API para registrar y clasificar incidentes de seguridad, con roles, contraseñas con hash, validación con Zod, límite de intentos y respaldos.',
     etiquetas: ['Node.js', 'Prisma', 'PostgreSQL', 'JWT'],
     enlace: `${gh}/securedesk-adso`,
-  },
-  {
-    nombre: 'Landing + Panel',
-    texto: 'Landing con formulario de contacto guardado en base de datos y un panel de administración protegido con login.',
-    etiquetas: ['React', 'Tailwind', 'Express', 'Prisma'],
-    enlace: `${gh}/landing-panel-frontend`,
   },
   {
     nombre: 'Sistema Educativo API',
@@ -217,5 +238,6 @@ export const camino = [
   { fecha: '2025', titulo: 'Bases sólidas', texto: 'Java, bases de datos, UML, historias de usuario y mis primeras APIs REST.' },
   { fecha: '2026', titulo: 'DevOps y seguridad', texto: 'Docker, Nginx, Kubernetes, integración continua y seguridad informática aplicada.' },
   { fecha: 'Sep 2026', titulo: 'Tres apps en producción', texto: 'RitmoApp, CuentasClaras y ElCuaderno en vivo, con pruebas, CI y despliegue.' },
+  { fecha: 'Oct 2026', titulo: 'Para negocios reales', texto: 'Huellitas: la web de citas de una veterinaria, con un asistente de WhatsApp que agenda solo.' },
   { fecha: 'Abril 2027', titulo: 'Etapa productiva', texto: 'Busco la empresa donde aportar y seguir creciendo. ¿Será la tuya?', destacado: true },
 ];
