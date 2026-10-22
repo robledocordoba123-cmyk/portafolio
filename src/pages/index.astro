@@ -290,6 +290,7 @@ const cinta = stack.flatMap((g) => g.items);
                 <span class="camino-fecha">{c.fecha}</span>
                 <h3>{c.titulo}</h3>
                 <p>{c.texto}</p>
+                {c.enlace && <a class="camino-enlace" href={c.enlace} target="_blank" rel="noopener">Verificar credencial ↗</a>}
               </li>
             ))}
           </ol>
@@ -576,6 +577,7 @@ const cinta = stack.flatMap((g) => g.items);
   .camino-fecha { font-family: 'JetBrains Mono Variable', monospace; font-size: 13px; color: var(--acento); }
   .camino h3 { font-size: 21px; margin: 4px 0; }
   .camino p { color: var(--suave); font-size: 15px; }
+  .camino-enlace { display: inline-block; margin-top: 6px; font-size: 14px; color: var(--acento); text-decoration: underline; text-underline-offset: 3px; }
   .camino li.destacado h3 { color: var(--acento); }
 
   /* Contacto */
