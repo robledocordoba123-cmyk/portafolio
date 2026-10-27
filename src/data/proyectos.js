@@ -240,5 +240,5 @@ export const camino = [
   { fecha: 'Sep 2026', titulo: 'Tres apps en producción', texto: 'RitmoApp, CuentasClaras y ElCuaderno en vivo, con pruebas, CI y despliegue.' },
   { fecha: 'Oct 2026', titulo: 'Para negocios reales', texto: 'Huellitas: la web de citas de una veterinaria, con un asistente de WhatsApp que agenda solo.' },
   { fecha: 'Oct 2026', titulo: 'Certificado de Anthropic', texto: 'Building with the Claude API: prompts, uso de herramientas, RAG, MCP y agentes de IA.', enlace: 'https://academy.claude.com/verify/e4e45562c0607451741ccedcbaec4988' },
-  { fecha: 'Abril 2027', titulo: 'Etapa productiva', texto: 'Busco la empresa donde aportar y seguir creciendo. ¿Será la tuya?', destacado: true },
+  { fecha: 'Hoy', titulo: 'Contrato de aprendizaje', texto: 'Disponible desde ya, en etapa lectiva o productiva. Busco la empresa donde aportar y seguir creciendo. ¿Será la tuya?', destacado: true },
 ];
