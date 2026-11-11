@@ -21,15 +21,15 @@ export const proyectos = [
     problema:
       'Las apps de los bancos solo muestran lo que pasa por ese banco. El efectivo y las billeteras digitales quedan por fuera, y a fin de mes nadie sabe en qué se fue la plata.',
     solucion:
-      'Una app web para registrar ingresos y gastos por cuenta y categoría, pasar plata entre cuentas propias, ponerse presupuestos con alertas al 80 % y al 100 %, ver el mes en gráficas y exportar todo a Excel.',
+      'Una app web para registrar ingresos y gastos por cuenta, ponerse presupuestos que se dibujan como sobres que se vacían al gastar, llevar las deudas con amigos y familia ("cuentas claras"), recordar los pagos fijos del mes y ahorrar para metas. Tiene identidad propia con los colores de los billetes colombianos.',
     reto:
       'Que la plata siempre cuadre: montos con BigDecimal (nunca double), saldos calculados y transferencias atómicas. Si una parte falla, no se guarda ninguna. Lo compruebo con una prueba que fuerza el error.',
     cifras: [
-      { valor: '70', texto: 'pruebas contra PostgreSQL real' },
-      { valor: '10', texto: 'Pull Requests con CI en verde' },
-      { valor: '28', texto: 'endpoints documentados en Swagger' },
+      { valor: '127', texto: 'pruebas: JUnit con Testcontainers, Vitest y Playwright' },
+      { valor: '100', texto: 'en accesibilidad, SEO y buenas prácticas (Lighthouse)' },
+      { valor: '13', texto: 'decisiones de diseño documentadas' },
     ],
-    stack: ['Java 21', 'Spring Boot', 'Spring Security', 'JPA', 'Flyway', 'PostgreSQL', 'React', 'Testcontainers', 'Docker'],
+    stack: ['Java 21', 'Spring Boot', 'Spring Security', 'JPA', 'Flyway', 'PostgreSQL', 'React', 'Testcontainers', 'Playwright', 'Docker'],
     demo: 'https://cuentasclaras-demo.vercel.app',
     codigo: `${gh}/CuentasClaras`,
     imagen: ccResumen,
@@ -50,7 +50,7 @@ export const proyectos = [
     reto:
       'Sin sobrecupo aunque dos personas reserven el último cupo al mismo tiempo (UPDATE condicional dentro de una transacción), y cada academia totalmente aislada de las demás desde la capa de datos.',
     cifras: [
-      { valor: '182', texto: 'pruebas con Jest, Supertest y Vitest' },
+      { valor: '233', texto: 'pruebas con Jest, Supertest y Vitest' },
       { valor: '4', texto: 'roles con permisos distintos' },
       { valor: '0', texto: 'sobrecupos bajo concurrencia' },
     ],
@@ -71,15 +71,15 @@ export const proyectos = [
     problema:
       'En la tienda de barrio se fía y se anota en un cuaderno. Ahí se pierden las cuentas: nadie sabe cuánto debe cada vecino, qué se está acabando ni cuánto se ganó en el día.',
     solucion:
-      'Un punto de venta para el celular del mostrador: ventas en efectivo, Nequi o fiado, inventario que se descuenta solo, cupo de fiado por cliente, abonos y el cierre de caja del día con la ganancia real.',
+      'Un punto de venta para el celular del mostrador: ventas en efectivo, Nequi o fiado, venta a granel por peso, inventario que se descuenta solo, cupo de fiado por vecino, caja con base, gastos y cierre, reportes, una bitácora que nadie puede borrar y un equipo de cajeros que la dueña maneja. Cualquier tienda se registra sola.',
     reto:
-      'TypeScript de punta a punta con los mismos esquemas Zod validando el formulario y la API, y sin sobreventa ni fiados por encima del cupo aunque dos cajeros vendan al mismo tiempo (UPDATE condicional y SELECT ... FOR UPDATE).',
+      'Sin sobreventa ni fiados por encima del cupo aunque dos cajeros vendan al mismo tiempo (UPDATE condicional y SELECT ... FOR UPDATE), con los mismos esquemas Zod validando el formulario y la API. Si la dueña desactiva a un cajero, su sesión se cierra al instante.',
     cifras: [
-      { valor: '27', texto: 'pruebas contra PostgreSQL real' },
-      { valor: '2', texto: 'roles: dueña y cajero' },
-      { valor: '1', texto: 'esquema Zod por regla, en front y back' },
+      { valor: '116', texto: 'pruebas: Jest contra PostgreSQL, Vitest y Playwright' },
+      { valor: '100', texto: 'en accesibilidad y SEO (Lighthouse)' },
+      { valor: '17', texto: 'decisiones de diseño documentadas' },
     ],
-    stack: ['TypeScript', 'NestJS', 'Drizzle ORM', 'PostgreSQL', 'Zod', 'React', 'TanStack Query', 'Tailwind CSS', 'Jest'],
+    stack: ['TypeScript', 'NestJS', 'Drizzle ORM', 'PostgreSQL', 'Zod', 'React', 'TanStack Query', 'Tailwind CSS', 'Jest', 'Playwright'],
     demo: 'https://elcuaderno-demo.vercel.app',
     codigo: `${gh}/ElCuaderno`,
     imagen: ecVender,
@@ -96,15 +96,15 @@ export const proyectos = [
     problema:
       'Las veterinarias de barrio reciben las citas por llamadas y por WhatsApp a cualquier hora. Los mensajes se pierden, se repiten las mismas preguntas todo el día y nadie tiene la agenda en un solo lugar.',
     solucion:
-      'Una página web donde el cliente pide su cita en un minuto, un panel para que el negocio las atienda, y un asistente de WhatsApp que responde servicios y horarios, toma los datos de la cita y la deja en el mismo panel. Si hace falta, pasa la conversación a una persona.',
+      'Una página web donde el cliente pide su cita en un minuto y la cambia con un enlace, un panel con roles (administración, veterinario y recepción) con historia clínica y carné de vacunas, y un asistente de WhatsApp que responde servicios y horarios, toma los datos de la cita y la deja en el mismo panel. Si hace falta, pasa la conversación a una persona.',
     reto:
       'Que el asistente sea seguro y no dependa de una IA: un motor de conversación propio guarda cada paso, el webhook de WhatsApp verifica la firma de Meta y la IA (Claude) es opcional, solo para entender mensajes libres.',
     cifras: [
-      { valor: '20', texto: 'pruebas con Jest y Supertest' },
+      { valor: '190', texto: 'pruebas: Jest, Vitest y Playwright' },
+      { valor: '3', texto: 'roles en el panel del negocio' },
       { valor: '2', texto: 'canales: web y WhatsApp' },
-      { valor: '1', texto: 'panel para todas las citas' },
     ],
-    stack: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'WhatsApp Cloud API', 'Jest'],
+    stack: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'Prisma', 'PostgreSQL', 'WhatsApp Cloud API', 'Jest', 'Playwright'],
     demo: 'https://huellitas-veterinaria.vercel.app',
     codigo: `${gh}/landing-panel-backend`,
     imagen: huInicio,
